@@ -2,7 +2,7 @@
 
 //执行脚本前先安装这两个依赖： sudo apt install php-xml php-mbstring
 
-//这里以下载小说 ‘http://www.xx31xs.org/134/134314/’ 为例子，原理很简单就是先下载目录页，然后下载每个章节内容，最后保存为txt文件
+//这里以下载小说 ‘http://www.xx31xs.org/14/14133/’ 为例子，原理很简单就是先下载目录页，然后下载每个章节内容，最后保存为txt文件
 
 $host = "http://www.xx31xs.org";
 $toc = file_get_contents($host . '/14/14133/');
@@ -50,7 +50,7 @@ for ($i = 0; $i < $ddItems->length; $i++) {
     $pos2 = mb_strpos($textContent, "bdshare");
     $textContent = mb_substr($textContent, $pos1 + 13, $pos2 - $pos1 - 13);
 
-    $novelContent .= $chapterTitle ."\r\n\r\n". $textContent;
+    $novelContent .= $chapterTitle . "\r\n\r\n" . $textContent . "\r\n\r\n";
 }
 
 file_put_contents($novelName.".txt", $novelContent);
